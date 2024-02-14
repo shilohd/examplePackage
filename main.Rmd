@@ -5,6 +5,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
 ```
 
 ## Aims
@@ -66,7 +67,7 @@ devtools::load_all()
 
 ### Manipulate data
 
-The functions `mm_to_inches` and `g_to_oz` don't exist yet! You need to create them and add them to your package. To do this, make a new script in the `R` folder called "conversions.R" and put the code for these new functions there. Remember to add roxygen documentation (including `@export`) and run `devtools::document()` before re-running this notebook.
+The functions `mm_to_inches()` and `g_to_oz()` don't exist yet! You need to create them and add them to your package. To do this, make a new script in the `R/` folder called "conversions.R" and put the code for these new functions there. Remember to add roxygen documentation (including `@export`) and run `devtools::document()` before re-running this notebook.
 
 Each function needs to take in one parameter - the numbers to convert. This will be a numeric object of any length. It needs to perform the conversion and return the converted values. There are 25.4 millimetres in an inch and 28.349523125 grams in an ounce. 
 
@@ -91,5 +92,20 @@ library(testthat)
 
 test_that("length conversions handle zeros", expect_equal(mm_to_inches(0), 0))
 test_that("length conversions handle single numbers", expect_equal(mm_to_inches(100), 3.937008, tolerance = 0.0000001))
+test_that("length conversions handle negatives numbers", expect_equal(mm_to_inches(-100), -3.937008, tolerance = 0.0000001))
 test_that("length conversions handle vectors longer than 1", expect_equal(mm_to_inches(c(100, 1000, 10000)), c(3.937008, 39.37008, 393.7008), tolerance = 0.0000001))
+
+test_that("weight conversions handle zeros", expect_equal(mm_to_inches(0), 0))
+test_that("weight conversions handle single numbers", expect_equal(mm_to_inches(100), 3.527396, tolerance = 0.0000001))
+test_that("weight conversions handle negatives numbers", expect_equal(mm_to_inches(-100), -3.527396, tolerance = 0.0000001))
+test_that("weight conversions handle vectors longer than 1", expect_equal(mm_to_inches(c(100, 1000, 10000)), c(3.527396, 35.27396, 352.7396), tolerance = 0.0000001))
+```
+
+### Further developments
+
+There is a lot more than can be added to this package. Here are some ideas for further developments:
+
+* Add new modules with functionality for summary stats, visualisations, etc.
+* Add dependencies using usethis::use_package()
+* set up a test folder with usethis::use_test() and migrate the tests from this file 
 
