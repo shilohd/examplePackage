@@ -95,10 +95,10 @@ test_that("length conversions handle single numbers", expect_equal(mm_to_inches(
 test_that("length conversions handle negatives numbers", expect_equal(mm_to_inches(-100), -3.937008, tolerance = 0.0000001))
 test_that("length conversions handle vectors longer than 1", expect_equal(mm_to_inches(c(100, 1000, 10000)), c(3.937008, 39.37008, 393.7008), tolerance = 0.0000001))
 
-test_that("weight conversions handle zeros", expect_equal(mm_to_inches(0), 0))
-test_that("weight conversions handle single numbers", expect_equal(mm_to_inches(100), 3.527396, tolerance = 0.0000001))
-test_that("weight conversions handle negatives numbers", expect_equal(mm_to_inches(-100), -3.527396, tolerance = 0.0000001))
-test_that("weight conversions handle vectors longer than 1", expect_equal(mm_to_inches(c(100, 1000, 10000)), c(3.527396, 35.27396, 352.7396), tolerance = 0.0000001))
+test_that("weight conversions handle zeros", expect_equal(g_to_oz(0), 0))
+test_that("weight conversions handle single numbers", expect_equal(g_to_oz(100), 3.527396, tolerance = 0.0000001))
+test_that("weight conversions handle negatives numbers", expect_equal(g_to_oz(-100), -3.527396, tolerance = 0.0000001))
+test_that("weight conversions handle vectors longer than 1", expect_equal(g_to_oz(c(100, 1000, 10000)), c(3.527396, 35.27396, 352.7396), tolerance = 0.0000001))
 ```
 
 ### Further developments
